@@ -11,7 +11,30 @@
 
 export function find(array, callback) {
   // Your code goes here...
-  
+
+  let returnElement = {};
+  let throttle = true;
+
+
+  for (let element of array) {
+    if(!throttle){
+      break;
+    }
+
+    if (callback(element)) {
+      returnElement = element;
+      throttle = false;
+    } else {
+      returnElement = undefined;
+    }
+  }
+
+
+
+
+
+
+  return returnElement;
 }
 
 

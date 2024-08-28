@@ -11,11 +11,68 @@
 export function minBy(array, cb) {
   // Your code goes here...
 
+  if (array.length === 0) {
+    return undefined;
+  }
+
+  let currentMin = cb(array[0]);
+  let index = 0;
+  let obj = array[0];
+  let type = typeof currentMin;
+
+  if (type === "string") {
+    for (let i = 1; i < array.length; i++) {
+      if (cb(array[i]) < currentMin) {
+        currentMin = cb(array[i]);
+        index = i;
+        obj = array[index];
+      }
+    }
+  } else {
+    for (let i = 1; i < array.length; i++) {
+      if (currentMin < cb(array[i]) || currentMin === cb(array[i])) {
+        obj = array[index];
+      } else {
+        currentMin = cb(array[i]);
+        index = i;
+      }
+    }
+  }
+
+  return obj;
 }
 
 export function maxBy(array, cb) {
   // Your code goes here...
 
+  if (array.length === 0) {
+    return undefined;
+  }
+
+  let currentMax = cb(array[0]);
+  let index = 0;
+  let obj = array[0];
+  let type = typeof currentMin;
+
+  if (type === "string") {
+    for (let i = 1; i < array.length; i++) {
+      if (cb(array[i].length) > currentMax.length) {
+        currentMax = cb(array[i]);
+        index = i;
+        obj = array[index];
+      }
+    }
+  } else {
+    for (let i = 1; i < array.length; i++) {
+      if (currentMax > cb(array[i]) || currentMax === cb(array[i])) {
+        obj = array[index];
+      } else {
+        currentMax = cb(array[i]);
+        index = i;
+      }
+    }
+  }
+  return obj;
 }
 
 
